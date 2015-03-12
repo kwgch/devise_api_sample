@@ -2,10 +2,9 @@ class NotesController < ApplicationController
   load_and_authorize_resource
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
-#     @notes = Note.all
     @notes = Note.accessible_by(current_ability)
     respond_with(@notes)
   end
@@ -25,7 +24,6 @@ class NotesController < ApplicationController
   def create
     # ノートの作成者を設定
     @note = Note.new(note_params.merge(user: current_user))
-#     @note = Note.new(note_params)
     @note.save
     respond_with(@note)
   end

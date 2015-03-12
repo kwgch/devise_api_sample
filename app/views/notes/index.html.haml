@@ -1,25 +1,15 @@
 %h1 Listing notes
 
-%table
+%table.ui.table.segment
   %thead
     %tr
-      %th User
       %th Title
       %th Body
+      %th created_at
       %th
-      %th
-      %th
-
   %tbody
-    - @notes.each do |note|
-      %tr
-        %td= note.user
-        %td= note.title
-        %td= note.body
-        %td= link_to 'Show', note
-        %td= link_to 'Edit', edit_note_path(note)
-        %td= link_to 'Destroy', note, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Note', new_note_path
+    = render @notes
+  %tfoot
+    %tr
+      %th{colspan: 4}
+        = link_to 'New Note', new_note_path, class: 'ui button blue'

@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  resources :notes
+#   resources :notes
+#   devise_for :users
+#   resource :authentication_token, only: [:update, :destroy]
 
-  devise_for :users
+  resources :notes
+  resource :authentication_token, only: [:update, :destroy]
+  devise_for :users, controllers: { sessions: "sessions"}
+  root to: 'home#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,5 +1,5 @@
 .ui.pointing.menu.large
-  - if can? :namage, Note
+  - if can? :manage, Note
     = active_link_to notes_path, class: 'item' do
       = semantic_icon(:book)
       ノート
